@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.game-board {
+    display: flex;
+    flex-wrap: wrap; /* Allows divs to wrap into rows */
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Prevents scrolling */
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Optional background */
+    position: relative; /* Required for positioning SVG */
+  }
+  
+  /* Individual cell styling */
+  .game-board .cell {
+    position: relative; 
+    flex: 1 0 calc(100% / 9); /* Each cell takes 1/3 width of the row */
+    height: calc(100vh / 9); /* Each cell takes 1/5 height of the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  /* SVG overlay for lines */
+.triangle-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks through the lines */
+  }
+
+
+/* General styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Start menu styling */
+  .start-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    text-align: center;
+    position: relative;
+  }
+  
+  .game-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    animation: fadeIn 2s;
+  }
+  
+  .start-button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+  }
+  
+  .start-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .start-button:active {
+    transform: scale(0.95);
+  }
+  
+  /* Settings icon styling */
+  .settings-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .settings-icon:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+  }
+  
+  /* Settings menu styling */
+.settings-menu {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #ffffff;
+    color: #333;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    width: 250px;
+    animation: fadeIn 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    z-index: 10;
+  }
+  
+  /* Menu title styling */
+  .settings-menu h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    color: #007bff;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Label styling for options */
+  .settings-menu label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .settings-menu label:hover {
+    color: #007bff;
+  }
+  
+  /* Checkbox styling */
+  .settings-menu input[type="checkbox"] {
+    accent-color: #007bff; /* Changes checkbox color */
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  /* Slider styling */
+  .settings-menu input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .settings-menu input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .settings-menu input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+  }
+  
+  .settings-menu input[type="range"]:active::-webkit-slider-thumb {
+    transform: scale(1.1);
+  }
+  
+  .settings-menu input[type="range"]:focus {
+    background: #cce5ff;
+  }
+  
+  /* Hover effect for the entire menu */
+  .settings-menu:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Responsive design adjustments */
+  @media (max-width: 768px) {
+    .settings-menu {
+      width: 200px;
+      padding: 1rem;
+    }
+  
+    .settings-menu h3 {
+      font-size: 1.2rem;
+    }
+  
+    .settings-menu label {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Responsive design adjustments */
+  @media (max-width: 768px) {
+    .settings-icon {
+      font-size: 1.5rem;
+      top: 15px;
+      right: 15px;
+    }
+  
+    .settings-menu {
+      width: 180px;
+    }
+  
+    .game-title {
+      font-size: 2rem;
+    }
+  
+    .start-button {
+      font-size: 1rem;
+      padding: 0.8rem 1.6rem;
+    }
+  }
+  
