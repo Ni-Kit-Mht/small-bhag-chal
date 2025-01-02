@@ -45,7 +45,7 @@ function createGameBoard() {
     for (let i = 0; i < totalCells; i++) {
       const cell = document.createElement('div');
       cell.classList.add('cell');
-      cell.textContent = `Cell ${i + 1}`;
+      //cell.textContent = `Cell ${i + 1}`;
       
       // Add background color to the squares at specified indices
       if(i === 13) {
